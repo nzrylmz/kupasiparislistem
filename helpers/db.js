@@ -21,24 +21,38 @@ class veritabani {
         this.db = mysql.createPool(this.dbConfig);
     }
 
-    tumSiparisler(){
+    tumSiparisler() {
         return new Promise((resolve,reject) => {
             this.db.query("SELECT * FROM siparisler", (err, data) => {
-                if(err) reject(err);
+                if(err) return reject(err);
                 resolve(data);
             });
         })
     }
 
-    siparisEkle (siparis){
+    siparisEkle(siparis) {
         return new Promise((resolve, reject) => {
             this.db.query(
-                "INSERT INTO siparisler SET adSoyad=?, toplamFiyat=?, aciklama=?, kargoAdresi=?",
-                [siparis.adSoyad, siparis.toplamFiyat, siparis.aciklama, siparis.kargoAdresi],
+                "INSERT INTO siparisler SET adSoyad=?, telNo=?, toplamFiyat=?, aciklama=?, kargoAdresi=?",
+                [siparis.adSoyad, siparis.telNo, siparis.toplamFiyat, siparis.aciklama, siparis.kargoAdresi],
                 (err,data) => {
-                    if(err) reject(err);
+                    if(err) return reject(err);
                     resolve(data);
                 });
+        })
+    }
+
+    siparisSil(siparisID) {
+        return new Promise((resolve,reject) => {
+            this.db.query(
+                "DELETE FROM siparisler WHERE ID=?",
+                [siparisID],
+                (err, data) => {
+                    console.log({err,data});
+                    if(err) return reject(err);
+                    resolve(data);
+                }
+            )
         })
     }
 

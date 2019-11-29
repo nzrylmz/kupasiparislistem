@@ -3,7 +3,19 @@
   <component name="ChangeListManager">
     <list default="true" id="a586a870-bd0f-4137-a4ef-14264b157c15" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helpers/db.js" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/db.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/asset-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/precache-manifest.6a45e2aa6b294cda3205ec02cd8f3098.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/service-worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/service-worker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/static/css/main.bef047fa.chunk.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/static/css/main.bef047fa.chunk.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/static/js/2.1752286d.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/static/js/2.1752286d.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/static/js/main.9be3e938.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/static/js/main.9be3e938.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/siparisler.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/siparisler.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,7 +37,7 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../frontend" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="yarn" />
   </component>
   <component name="RunDashboard">
@@ -51,7 +63,8 @@
       <option name="presentableId" value="Default" />
       <updated>1574889124748</updated>
       <workItem from="1574889127996" duration="3807000" />
-      <workItem from="1574925492232" duration="11908000" />
+      <workItem from="1574925492232" duration="12764000" />
+      <workItem from="1575063247157" duration="2168000" />
     </task>
     <servers />
   </component>
@@ -63,7 +76,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

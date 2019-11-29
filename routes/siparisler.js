@@ -13,9 +13,19 @@ router.get('/', async(req, res, next) => {
 
 router.post("/ekle", async(req,res) => {
   try{
-    console.log("ekle", req.body);
     await global.db.siparisEkle(req.body);
     return await res.json(true);
+  }catch (e) {
+    console.error(e);
+    return await res.json(false);
+  }
+});
+
+router.delete("/sil/:siparisID", async(req,res) => {
+  try{
+    const sil = await global.db.siparisSil(req.params.siparisID);
+    console.log(sil);
+    res.json(true);
   }catch (e) {
     console.error(e);
     return await res.json(false);
