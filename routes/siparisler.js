@@ -5,19 +5,19 @@ const router = express.Router();
 router.get('/', async(req, res, next) => {
   try{
     const siparisler = await global.db.tumSiparisler();
-    return await res.json(siparisler);
+    res.json(siparisler);
   }catch (e) {
-    return await res.json(false);
+    res.json(false);
   }
 });
 
 router.post("/ekle", async(req,res) => {
   try{
     await global.db.siparisEkle(req.body);
-    return await res.json(true);
+    res.json(true);
   }catch (e) {
     console.error(e);
-    return await res.json(false);
+    res.json(false);
   }
 });
 
@@ -28,7 +28,7 @@ router.delete("/sil/:siparisID", async(req,res) => {
     res.json(true);
   }catch (e) {
     console.error(e);
-    return await res.json(false);
+    res.json(false);
   }
 });
 

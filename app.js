@@ -4,8 +4,8 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const session = require("express-session");
+const bcrypt = require("bcryptjs");
 
-const kullanici = require("./kullanici");
 const siparislerRouter = require('./routes/siparisler');
 const sessionKontrol = require("./helpers/sessionKontrol");
 
@@ -30,25 +30,44 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/siparis', sessionKontrol, siparislerRouter);
-app.post("/api/giris", (req,res) => {
-    console.log(req.body);
-    const { kullaniciAdi, kullaniciSifre } = req.body;
-    if(kullaniciAdi === kullanici.kullaniciAdi && kullaniciSifre === kullanici.kullaniciSifre){
-        req.session.kullanici = { kullaniciAdi };
-        console.log("giriş yapıldı", req.session.kullanici);
-        res.json(true);
-    } else {
-        console.log("giriş yapılamadı");
+
+app.post("/api/giris", async(req,res) => {
+    try{
+        const { kullaniciAdi, kullaniciSifre } = req.body;
+
+        const [kullanici] = await global.db.kullaniciCek(kullaniciAdi);
+        if(kullanici.kullaniciAdi === kullaniciAdi && kullanici.kullaniciSifre === kullaniciSifre){
+            req.session.kullanici = { ID:kullanici.ID };
+            res.json(true);
+        } else {
+            res.json(false);
+        }
+    }catch (e) {
+        console.error(e);
         res.json(false);
     }
 });
+
 app.post("/api/cikis", sessionKontrol, (req,res) =>{
     delete req.session.kullanici;
     console.log("Çıkış", req.session.kullanici);
     res.json(true);
 });
+
 app.get("/api/giriskontrol", sessionKontrol, (req,res) =>{
     res.json(true);
+});
+
+app.post("/api/kayitol", async(req,res) => {
+    try{
+        let { kullaniciAdi, kullaniciSifre } = req.body;
+        kullaniciSifre = await bcrypt.hash(kullaniciSifre, 5);
+        await global.db.kayitOl(kullaniciAdi,kullaniciSifre);
+        res.json(true);
+    }catch (e) {
+        console.log(e);
+        res.json(false);
+    }
 });
 
 app.use("/", (req,res) => {

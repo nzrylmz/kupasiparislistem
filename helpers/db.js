@@ -65,6 +65,32 @@ class veritabani {
         })
     }
 
+    kayitOl(kullaniciAdi,kullaniciSifre) {
+        return new Promise((resolve,reject) => {
+            this.db.query(
+                "INSERT INTO kullanicilar SET kullaniciAdi=?, kullaniciSifre=?",
+                [kullaniciAdi,kullaniciSifre],
+                (err,data) => {
+                    if(err) return reject(err);
+                    resolve(data);
+                }
+            )
+        })
+    }
+
+    kullaniciCek(kullaniciAdi) {
+        return new Promise((resolve,reject) => {
+            this.db.query(
+                "SELECT * FROM kullanicilar WHERE kullaniciAdi=?",
+                [kullaniciAdi],
+                (err,data) => {
+                    if(err) return reject(err);
+                    resolve(data);
+                }
+            )
+        })
+    }
+
 }
 
 module.exports = veritabani;
